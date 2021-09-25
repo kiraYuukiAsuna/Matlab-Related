@@ -2,7 +2,7 @@
 %学号：2019213336
 %标题：医学图像处理作业1_2019213336_王瑞龙
 %文件：main.m
-%描述：不使用Matlab自带函数histeq，自己编程实现灰度图像的直方图均衡化算法
+%描述：不使用Matlab自带函数histeq，自己编程实现灰度图像的直方图均衡化算法（改善版本）
 
 close all;%关闭所有figure窗口
 clear ;%清除所有变量
@@ -75,7 +75,7 @@ for i=1:256
 end
 
 %累积直方图*(L-1)后取整得到变换函数（L-1=255，因为灰度级0-255为256级）
-transfrom_function=uint8(255*cumulative_histogram);
+transfrom_function=uint8(uint8(255*cumulative_histogram)/4)*4;
 
 %计算均衡化后图像灰度图
 for i=1:image_height
